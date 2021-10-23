@@ -16,7 +16,7 @@ interface CryptoDao {
     fun searchCoin(searchQuery: String): Flow<List<CryptoEntity>>
 
     @Query("SELECT * FROM crypto where favorite = 1")
-    fun getFavoriteCoin(): Flow<CryptoEntity>
+    fun getFavoriteCoin(): Flow<List<CryptoEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCoin(coin: List<CryptoEntity>)
