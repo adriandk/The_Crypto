@@ -13,7 +13,7 @@ interface ApiService {
         @Query("per_page") perPage: Int = 100,
         @Query("sparkline") sparkline: Boolean = false,
         @Query("order") order: String = "market_cap_desc"
-    ): CryptoResponse
+    ): List<CryptoResponse>
 
     @GET("coins/{id}")
     fun getCoinDetail(

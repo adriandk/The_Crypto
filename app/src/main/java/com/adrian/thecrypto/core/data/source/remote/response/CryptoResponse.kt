@@ -13,7 +13,7 @@ data class CryptoResponse(
     val name: String,
 
     @field:SerializedName("price_change_percentage_1h_in_currency")
-    val percentage: String,
+    val percentage: Int,
 
     @field:SerializedName("image")
     val image: String,

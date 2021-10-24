@@ -21,7 +21,7 @@ class LocalDataSource(private val cryptoDao: CryptoDao) {
     suspend fun insertCoin(coin: List<CryptoEntity>) =
         cryptoDao.insertCoin(coin)
 
-    fun setFavoriteCoin(coin: CryptoEntity, newState: Boolean) {
+    fun updateCoin(coin: CryptoEntity, newState: Boolean) {
         coin.favorite = newState
         cryptoDao.updateFavoriteCoin(coin)
     }
