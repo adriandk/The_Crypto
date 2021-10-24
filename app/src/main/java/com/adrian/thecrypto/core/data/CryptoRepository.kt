@@ -1,5 +1,6 @@
 package com.adrian.thecrypto.core.data
 
+import android.util.Log
 import com.adrian.thecrypto.core.data.source.local.LocalDataSource
 import com.adrian.thecrypto.core.data.source.remote.RemoteDataSource
 import com.adrian.thecrypto.core.data.source.remote.network.ApiResponse
@@ -25,7 +26,7 @@ class CryptoRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Crypto>?): Boolean = data == null || data.isEmpty()
+            override fun shouldFetch(data: List<Crypto>?): Boolean = true
 
             override suspend fun createCall(): Flow<ApiResponse<List<CryptoResponse>>> =
                 remoteDataSource.getAllCoin()
@@ -34,7 +35,6 @@ class CryptoRepository(
                 val coinList = DataMapper.mapResponseToEntities(data)
                 localDataSource.insertCoin(coinList)
             }
-
         }.asFlow()
 
     override fun getDetailCoin(id: String): Flow<Resource<Crypto>> =
@@ -45,13 +45,14 @@ class CryptoRepository(
                 }
             }
 
-            override fun shouldFetch(data: Crypto?): Boolean = false
+            override fun shouldFetch(data: Crypto?): Boolean = true
 
             override suspend fun createCall(): Flow<ApiResponse<CryptoResponse>> =
                 remoteDataSource.getDetailCoin(id)
 
             override suspend fun saveCallResult(data: CryptoResponse) {
                 val coinDetail = DataMapper.mapResponseToEntity(data)
+                Log.e("deka", "$coinDetail")
                 localDataSource.updateCoin(coinDetail, false)
             }
 

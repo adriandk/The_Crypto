@@ -6,12 +6,12 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Crypto(
     val id: String,
-    val symbol: String,
-    val name: String,
-    val image: String,
-    val price: String,
-    val percent: String,
-    val volume: String,
-    val description: String,
+    val symbol: String?,
+    val name: String?,
+    val image: String?,
+    val price: Double?,
+    val percent: Double?,
+    val volume: Double?,
+    val description: String?,
     val favorite: Boolean
 ): Parcelable

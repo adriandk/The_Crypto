@@ -11,14 +11,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/coin"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/price_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:text="@string/price"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:icon="@drawable/arrow_down_icon"
+            app:iconTint="@android:color/black"
+            tools:ignore="RelativeOverlap" />
+
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/price_button"
             android:id="@+id/rv_market"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="none"
             tools:listitem="@layout/item_list" />
 
         <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_below="@id/price_button"
             android:id="@+id/loading_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,13 +75,14 @@
         </com.facebook.shimmer.ShimmerFrameLayout>
 
         <include
+            android:layout_below="@id/price_button"
             android:id="@+id/error_view"
             layout="@layout/error_view"
             android:visibility="gone"
+            android:layout_marginTop="28dp"
             android:layout_centerInParent="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
-
     </RelativeLayout>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

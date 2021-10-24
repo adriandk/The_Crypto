@@ -5,6 +5,7 @@ import androidx.sqlite.db.SimpleSQLiteQuery
 import com.adrian.thecrypto.core.data.source.local.entity.CryptoEntity
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface CryptoDao {
     @RawQuery(observedEntities = [CryptoEntity::class])
     fun getCoinList(query: SimpleSQLiteQuery): Flow<List<CryptoEntity>>

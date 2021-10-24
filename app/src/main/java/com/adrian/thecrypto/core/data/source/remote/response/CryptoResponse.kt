@@ -7,22 +7,22 @@ data class CryptoResponse(
     val id: String,
 
     @field:SerializedName("symbol")
-    val symbol: String,
+    val symbol: String?,
 
     @field:SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @field:SerializedName("price_change_percentage_1h_in_currency")
-    val percentage: Int,
+    val percentage: Double?,
 
     @field:SerializedName("image")
-    val image: String,
+    val image: String?,
 
     @field:SerializedName("current_price")
-    val price: Int,
+    val price: Double?,
 
     @field:SerializedName("total_volume")
-    val volume: Int,
+    val volume: Double?,
 
     @field:SerializedName("description")
     val description: CryptoDescription,
@@ -30,5 +30,5 @@ data class CryptoResponse(
 
 data class CryptoDescription(
     @field:SerializedName("en")
-    val desc: String,
+    val desc: String?,
 )

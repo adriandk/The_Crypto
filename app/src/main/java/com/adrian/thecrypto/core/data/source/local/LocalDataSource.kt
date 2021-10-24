@@ -6,6 +6,7 @@ import com.adrian.thecrypto.core.utils.SortUtils
 import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource(private val cryptoDao: CryptoDao) {
+
     fun getAllCoin(sort: String): Flow<List<CryptoEntity>> {
         return cryptoDao.getCoinList(SortUtils.getSortedQuery(sort))
     }

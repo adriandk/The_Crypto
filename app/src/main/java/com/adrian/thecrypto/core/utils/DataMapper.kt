@@ -14,10 +14,10 @@ object DataMapper {
                 symbol = it.symbol,
                 name = it.name,
                 image = it.image,
-                price = it.price.toString(),
-                percent = it.percentage.toString(),
-                volume = it.volume.toString(),
-                desc = it.description.desc,
+                price = it.price,
+                percent = it.percentage,
+                volume = it.volume,
+                desc = null,
                 favorite = false
             )
             listCoin.add(coin)
@@ -30,9 +30,9 @@ object DataMapper {
         symbol = data.symbol,
         name = data.name,
         image = data.image,
-        price = data.price.toString(),
-        percent = data.percentage.toString(),
-        volume = data.volume.toString(),
+        price = data.price,
+        percent = data.percentage,
+        volume = data.volume,
         desc = data.description.desc,
         favorite = false
     )
@@ -46,7 +46,7 @@ object DataMapper {
         percent = data.percent,
         volume = data.volume,
         description = data.desc,
-        favorite = false
+        favorite = data.favorite
     )
 
     fun mapEntitiesToDomain(data: List<CryptoEntity>): List<Crypto> =

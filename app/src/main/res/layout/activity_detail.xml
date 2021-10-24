@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:contentScrim="@android:color/white"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@id/toolbar">
 
             <ImageView
                 android:id="@+id/image_detail"
@@ -33,13 +35,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                app:titleTextColor="@android:color/black"
                 app:popupTheme="@style/Thecrypto.PopupOverlay" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include android:id="@+id/content"
-        layout="@layout/content_detail"/>
+        layout="@layout/content_detail" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,15 +52,26 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/favorite_button"
-            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:contentDescription="@string/favorite"
             app:backgroundTint="@color/blue"
             app:fabCustomSize="70dp"
             app:srcCompat="@drawable/not_favorite_icon"
             app:tint="@android:color/white" />
     </RelativeLayout>
+
+    <include
+        android:id="@+id/error_view"
+        layout="@layout/error_view"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

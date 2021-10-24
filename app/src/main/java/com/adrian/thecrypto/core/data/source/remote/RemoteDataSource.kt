@@ -10,10 +10,12 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource(private val apiService: ApiService) {
+
     suspend fun getAllCoin(): Flow<ApiResponse<List<CryptoResponse>>> {
         return flow {
             try {
                 val response = apiService.getAllCoin()
+                Log.e("RemoteData", "$response")
 
                 if (response.isNotEmpty()) {
                     emit(ApiResponse.Success(response))
@@ -22,7 +24,6 @@ class RemoteDataSource(private val apiService: ApiService) {
                 }
 
             } catch (e: Exception) {
-                Log.e("Remote Data Source", e.toString())
                 emit(ApiResponse.Error(e.toString()))
             }
         }.flowOn(Dispatchers.IO)
@@ -32,10 +33,12 @@ class RemoteDataSource(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getCoinDetail(id)
+                Log.e("Adrian", "$id")
+                Log.e("Adrian", "$response")
                 emit(ApiResponse.Success(response))
 
             } catch (e: Exception) {
-                Log.e("Remote Data Source", e.toString())
+                Log.e("Adrian", e.toString())
                 emit(ApiResponse.Error(e.toString()))
             }
         }.flowOn(Dispatchers.IO)

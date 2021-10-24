@@ -1,8 +1,13 @@
 package com.adrian.thecrypto.core.di
 
 import androidx.room.Room
+import com.adrian.thecrypto.core.data.CryptoRepository
+import com.adrian.thecrypto.core.data.source.local.LocalDataSource
 import com.adrian.thecrypto.core.data.source.local.room.CryptoDatabase
+import com.adrian.thecrypto.core.data.source.remote.RemoteDataSource
 import com.adrian.thecrypto.core.data.source.remote.network.ApiService
+import com.adrian.thecrypto.core.domain.repository.ICryptoRepository
+import com.adrian.thecrypto.core.utils.AppExecutors
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -37,5 +42,18 @@ val networkModule = module {
             .client(get())
             .build()
         retrofit.create(ApiService::class.java)
+    }
+}
+
+val repositoryModule = module {
+    single { LocalDataSource(get()) }
+    single { RemoteDataSource(get()) }
+    factory { AppExecutors() }
+    single<ICryptoRepository> {
+        CryptoRepository(
+            get(),
+            get(),
+            get()
+        )
     }
 }

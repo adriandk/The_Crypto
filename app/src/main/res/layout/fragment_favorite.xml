@@ -7,7 +7,7 @@
     tools:context=".ui.FavoriteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_market"
+        android:id="@+id/rv_favorite"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"

@@ -14,25 +14,25 @@ data class CryptoEntity(
     var id: String,
 
     @ColumnInfo(name = "symbol")
-    var symbol: String,
+    var symbol: String?,
 
     @ColumnInfo(name = "name")
-    var name: String,
+    var name: String?,
 
     @ColumnInfo(name = "image")
-    var image: String,
+    var image: String?,
 
     @ColumnInfo(name = "price")
-    var price: String,
+    var price: Double?,
 
     @ColumnInfo(name = "percentage")
-    var percent: String,
+    var percent: Double?,
 
     @ColumnInfo(name = "volume")
-    var volume: String,
+    var volume: Double?,
 
     @ColumnInfo(name = "description")
-    var desc: String,
+    var desc: String?,
 
     @ColumnInfo(name = "favorite")
     var favorite: Boolean

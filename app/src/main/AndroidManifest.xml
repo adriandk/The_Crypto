@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TheCrypto">
         <activity
-            android:name=".ui.ConvertActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.DetailActivity"
             android:exported="false" />
         <activity
