@@ -24,11 +24,18 @@ data class CryptoResponse(
     @field:SerializedName("total_volume")
     val volume: Double?,
 
-    @field:SerializedName("description")
-    val description: CryptoDescription,
-)
+    @field:SerializedName("ath")
+    val ath: Double?,
 
-data class CryptoDescription(
-    @field:SerializedName("en")
-    val desc: String?,
+    @field:SerializedName("market_cap_change_24h")
+    val marketCap: Double?,
+
+    @field:SerializedName("high_24h")
+    val high: Double?,
+
+    @field:SerializedName("low_24h")
+    val low: Double?,
+
+    @field:SerializedName("max_supply")
+    val maxSupply: Double?,
 )

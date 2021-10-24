@@ -28,19 +28,4 @@ class RemoteDataSource(private val apiService: ApiService) {
             }
         }.flowOn(Dispatchers.IO)
     }
-
-    suspend fun getDetailCoin(id: String): Flow<ApiResponse<CryptoResponse>> {
-        return flow {
-            try {
-                val response = apiService.getCoinDetail(id)
-                Log.e("Adrian", "$id")
-                Log.e("Adrian", "$response")
-                emit(ApiResponse.Success(response))
-
-            } catch (e: Exception) {
-                Log.e("Adrian", e.toString())
-                emit(ApiResponse.Error(e.toString()))
-            }
-        }.flowOn(Dispatchers.IO)
-    }
 }

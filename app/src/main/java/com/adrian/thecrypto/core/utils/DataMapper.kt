@@ -17,37 +17,17 @@ object DataMapper {
                 price = it.price,
                 percent = it.percentage,
                 volume = it.volume,
-                desc = null,
+                ath = it.ath,
+                marketcap = it.marketCap,
+                high = it.high,
+                low = it.low,
+                supply = it.maxSupply,
                 favorite = false
             )
             listCoin.add(coin)
         }
         return listCoin
     }
-
-    fun mapResponseToEntity(data: CryptoResponse) = CryptoEntity(
-        id = data.id,
-        symbol = data.symbol,
-        name = data.name,
-        image = data.image,
-        price = data.price,
-        percent = data.percentage,
-        volume = data.volume,
-        desc = data.description.desc,
-        favorite = false
-    )
-
-    fun mapEntityToDomain(data: CryptoEntity) = Crypto(
-        id = data.id,
-        symbol = data.symbol,
-        name = data.name,
-        image = data.image,
-        price = data.price,
-        percent = data.percent,
-        volume = data.volume,
-        description = data.desc,
-        favorite = data.favorite
-    )
 
     fun mapEntitiesToDomain(data: List<CryptoEntity>): List<Crypto> =
         data.map {
@@ -59,7 +39,11 @@ object DataMapper {
                 price = it.price,
                 percent = it.percent,
                 volume = it.volume,
-                description = it.desc,
+                ath = it.ath,
+                marketCap = it.marketcap,
+                high = it.high,
+                low = it.low,
+                supply = it.supply,
                 favorite = it.favorite
             )
         }
@@ -72,7 +56,11 @@ object DataMapper {
         price = data.price,
         percent = data.percent,
         volume = data.volume,
-        desc = data.description,
+        ath = data.ath,
+        marketcap = data.marketCap,
+        high = data.high,
+        low = data.low,
+        supply = data.supply,
         favorite = data.favorite
     )
 }

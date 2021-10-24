@@ -1,13 +1,11 @@
 package com.adrian.thecrypto.ui
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.adrian.thecrypto.R
-import com.adrian.thecrypto.core.data.Resource
 import com.adrian.thecrypto.core.domain.model.Crypto
 import com.adrian.thecrypto.core.utils.Formatter
 import com.adrian.thecrypto.core.viewmodel.DetailViewModel
@@ -30,57 +28,37 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val coinData = intent.getParcelableExtra<Crypto>(COIN_DATA)
-        getData(coinData!!)
-    }
-
-    private fun getData(coin: Crypto) {
-        detailViewModel.getDetailCoin(coin.id).observe(this, { coinDetail ->
-            Log.e("agatha", "${coinDetail.data}")
-            Log.e("agatha", "$coinDetail")
-            if (coinDetail != null) {
-                when(coinDetail) {
-                    is Resource.Loading -> {
-                        content.visibility = View.GONE
-                        error_view.visibility = View.VISIBLE
-                    }
-                    is Resource.Error -> {
-                        content.visibility = View.GONE
-                        error_view.visibility = View.VISIBLE
-                    }
-                    is Resource.Success -> {
-                        content.visibility = View.VISIBLE
-                        error_view.visibility = View.GONE
-                        showDetailCoin(coinDetail.data!!)
-                    }
-                }
-            }
-        })
+        showDetailCoin(coinData)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showDetailCoin(coin: Crypto) {
+    private fun showDetailCoin(coin: Crypto?) {
+        coin?.let {
+            supportActionBar?.title = coin.name
+            content.crypto_price_detail.text = Formatter.getPrice(coin.price!!)
+            val percentage = coin.percent.toString().substring(0,5)
+            content.percent_detail.text = "${percentage}%"
+            content.ath_detail.text = Formatter.getPrice(coin.ath!!)
+            content.supply_detail.text = Formatter.getPrice(coin.supply!!)
+            content.high_detail.text = Formatter.getPrice(coin.high!!)
+            content.low_detail.text = Formatter.getPrice(coin.low!!)
+            if (coin.percent!! > 0) {
+                content.percent_detail.setTextColor(ContextCompat.getColor(this, R.color.green))
+            } else {
+                content.percent_detail.setTextColor(ContextCompat.getColor(this, R.color.red))
+            }
+            content.volume_detail.text = Formatter.getPrice(coin.volume!!)
+            Glide.with(this)
+                .load(coin.image)
+                .into(image_detail)
 
-        supportActionBar?.title = coin.name
-        content.crypto_price_detail.text = Formatter.getPrice(coin.price!!)
-        val percentage = coin.percent.toString().substring(0,5)
-        content.percent_detail.text = "${percentage}%"
-        if (coin.percent!! > 0) {
-            content.percent_detail.setTextColor(ContextCompat.getColor(this, R.color.green))
-        } else {
-            content.percent_detail.setTextColor(ContextCompat.getColor(this, R.color.red))
-        }
-        content.volume_detail.text = Formatter.getPrice(coin.volume!!)
-        content.crypto_desc.text = coin.description
-        Glide.with(this)
-            .load(coin.image)
-            .into(image_detail)
-
-        var favoriteStatus = coin.favorite
-        setFavoriteStatus(favoriteStatus)
-        favorite_button.setOnClickListener {
-            favoriteStatus = !favoriteStatus
-            detailViewModel.setFavoriteCoin(coin, favoriteStatus)
+            var favoriteStatus = coin.favorite
             setFavoriteStatus(favoriteStatus)
+            favorite_button.setOnClickListener {
+                favoriteStatus = !favoriteStatus
+                detailViewModel.setFavoriteCoin(coin, favoriteStatus)
+                setFavoriteStatus(favoriteStatus)
+            }
         }
     }
 

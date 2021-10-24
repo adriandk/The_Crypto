@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface CryptoUseCase {
     fun loadAllCoin(sort: String): Flow<Resource<List<Crypto>>>
-    fun getDetailCoin(id: String): Flow<Resource<Crypto>>
     fun getFavoriteCoin(): Flow<List<Crypto>>
     fun searchCoin(search: String): Flow<List<Crypto>>
     fun setFavoriteCoin(coin: Crypto, state: Boolean)

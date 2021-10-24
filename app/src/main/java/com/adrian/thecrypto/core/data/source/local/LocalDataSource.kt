@@ -15,10 +15,6 @@ class LocalDataSource(private val cryptoDao: CryptoDao) {
 
     fun getFavoriteCoin(): Flow<List<CryptoEntity>> = cryptoDao.getFavoriteCoin()
 
-    fun getDetailCoin(id: String): Flow<CryptoEntity> {
-        return cryptoDao.getDetailCoin(id)
-    }
-
     suspend fun insertCoin(coin: List<CryptoEntity>) =
         cryptoDao.insertCoin(coin)
 

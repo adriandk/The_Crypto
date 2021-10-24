@@ -1,7 +1,6 @@
 package com.adrian.thecrypto.core.adapter
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

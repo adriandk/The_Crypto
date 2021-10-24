@@ -2,15 +2,14 @@ package com.adrian.thecrypto.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.adrian.thecrypto.R
 import com.adrian.thecrypto.core.adapter.MainAdapter
 import com.adrian.thecrypto.core.viewmodel.FavoriteViewModel
-import com.adrian.thecrypto.core.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

@@ -31,8 +31,20 @@ data class CryptoEntity(
     @ColumnInfo(name = "volume")
     var volume: Double?,
 
-    @ColumnInfo(name = "description")
-    var desc: String?,
+    @ColumnInfo(name = "ath")
+    var ath: Double?,
+
+    @ColumnInfo(name = "marketcap")
+    var marketcap: Double?,
+
+    @ColumnInfo(name = "high")
+    var high: Double?,
+
+    @ColumnInfo(name = "low")
+    var low: Double?,
+
+    @ColumnInfo(name = "supply")
+    var supply: Double?,
 
     @ColumnInfo(name = "favorite")
     var favorite: Boolean

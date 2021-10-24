@@ -9,4 +9,10 @@
     <string name="crypto_image">Crypto Image</string>
     <string name="coin">Coin</string>
     <string name="price">Price</string>
+    <string name="all_time_high">All Time High</string>
+    <string name="latest_price">Latest Price</string>
+    <string name="volume">Volume</string>
+    <string name="high_24h">High 24H</string>
+    <string name="low_24h">Low 24H</string>
+    <string name="supply_coin">Supply Coin</string>
 </resources>

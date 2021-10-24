@@ -1,9 +1,9 @@
 package com.adrian.thecrypto.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.adrian.thecrypto.R
 
 class SplashActivity : AppCompatActivity() {

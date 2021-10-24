@@ -9,12 +9,10 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.adrian.thecrypto.R
 import com.adrian.thecrypto.core.adapter.MainAdapter
 import com.adrian.thecrypto.core.data.Resource
-import com.adrian.thecrypto.core.domain.model.Crypto
 import com.adrian.thecrypto.core.utils.SortUtils.HIGHEST
 import com.adrian.thecrypto.core.utils.SortUtils.LOWEST
 import com.adrian.thecrypto.core.viewmodel.MainViewModel
@@ -49,11 +47,11 @@ class MarketFragment : Fragment() {
 
             price_button.setOnClickListener {
                 state = if (state) {
-                    price_button.icon = ContextCompat.getDrawable(requireActivity(), R.drawable.arrow_down_icon)
+                    price_button.icon = ContextCompat.getDrawable(requireActivity(), R.drawable.arrow_up_icon)
                     getData(null, LOWEST)
                     false
                 } else {
-                    price_button.icon = ContextCompat.getDrawable(requireActivity(), R.drawable.arrow_up_icon)
+                    price_button.icon = ContextCompat.getDrawable(requireActivity(), R.drawable.arrow_down_icon)
                     getData(null, HIGHEST)
                     true
                 }

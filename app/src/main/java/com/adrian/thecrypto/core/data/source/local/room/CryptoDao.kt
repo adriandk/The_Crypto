@@ -10,9 +10,6 @@ interface CryptoDao {
     @RawQuery(observedEntities = [CryptoEntity::class])
     fun getCoinList(query: SimpleSQLiteQuery): Flow<List<CryptoEntity>>
 
-    @Query("SELECT * FROM crypto where id = :id")
-    fun getDetailCoin(id: String): Flow<CryptoEntity>
-
     @Query("SELECT * FROM crypto where name LIKE '%' || :searchQuery || '%'")
     fun searchCoin(searchQuery: String): Flow<List<CryptoEntity>>
 
