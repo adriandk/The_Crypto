@@ -15,4 +15,5 @@
     <string name="high_24h">High 24H</string>
     <string name="low_24h">Low 24H</string>
     <string name="supply_coin">Supply Coin</string>
+    <string name="logo">Logo</string>
 </resources>
