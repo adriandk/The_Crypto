@@ -119,11 +119,11 @@ class MarketFragment : Fragment() {
         searchView.queryHint = "Search Coins"
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                getData(query.toString(), HIGHEST)
                 return true
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
+            override fun onQueryTextChange(query: String?): Boolean {
+                getData(query.toString(), HIGHEST)
                 return true
             }
         })

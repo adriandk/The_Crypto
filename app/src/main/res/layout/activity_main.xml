@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/white"
             android:elevation="0.5dp"
+            android:theme="@style/CustomSearchView"
             app:popupTheme="@style/Thecrypto.PopupOverlay">
 
             <RelativeLayout

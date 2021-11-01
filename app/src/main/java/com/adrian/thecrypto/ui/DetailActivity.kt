@@ -1,7 +1,6 @@
 package com.adrian.thecrypto.ui
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -36,10 +35,14 @@ class DetailActivity : AppCompatActivity() {
         coin?.let {
             supportActionBar?.title = coin.name
             content.crypto_price_detail.text = Formatter.getPrice(coin.price!!)
-            val percentage = coin.percent.toString().substring(0,5)
+            val percentage = coin.percent.toString().substring(0, 5)
             content.percent_detail.text = "${percentage}%"
             content.ath_detail.text = Formatter.getPrice(coin.ath!!)
-            content.supply_detail.text = Formatter.getPrice(coin.supply!!)
+            if (coin.supply != null) {
+                content.supply_detail.text = Formatter.getSupply(coin.supply)
+            } else {
+                content.supply_detail.text = "Unlimited"
+            }
             content.high_detail.text = Formatter.getPrice(coin.high!!)
             content.low_detail.text = Formatter.getPrice(coin.low!!)
             if (coin.percent!! > 0) {
@@ -72,5 +75,10 @@ class DetailActivity : AppCompatActivity() {
                 ContextCompat.getDrawable(this, R.drawable.not_favorite_icon)
             )
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
     }
 }
